@@ -163,8 +163,6 @@ Preencha `DB_PASSWORD` (se o seu MySQL tiver senha) e defina um `JWT_SECRET` for
 node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"
 ```
 
-> ⚠️ A API **não inicia** sem `JWT_SECRET`. Nunca envie o arquivo `.env` ao GitHub (ele já está no `.gitignore`).
-
 **4. Crie as tabelas, popule dados de exemplo e inicie**
 
 ```bash
