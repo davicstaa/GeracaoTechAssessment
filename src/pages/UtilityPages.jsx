@@ -1,9 +1,0 @@
-import { Link } from 'react-router-dom'
-import { ShoppingBag, UserRound } from 'lucide-react'
-export function CartPage({ cart }) {
-  const total = cart.reduce((sum,p)=>sum+(p.priceDiscount||p.price),0)
-  return <div className="container utility-page"><h1>Meu carrinho</h1>{!cart.length ? <div className="empty-cart"><ShoppingBag size={42}/><h2>Seu carrinho está vazio</h2><p>Que tal encontrar algo que combine com você?</p><Link className="primary-button" to="/products">Explorar produtos</Link></div> : <><div className="cart-list">{cart.map((p,i)=><div className="cart-row" key={`${p.id}-${i}`}><img src={p.image} alt={p.name}/><div><strong>{p.name}</strong><span>Tamanho: {p.selectedSize || 'Único'}</span></div><b>{(p.priceDiscount||p.price).toLocaleString('pt-BR',{style:'currency',currency:'BRL'})}</b></div>)}</div><div className="cart-total">Total <strong>{total.toLocaleString('pt-BR',{style:'currency',currency:'BRL'})}</strong></div><button className="buy-button" onClick={()=>alert('Compra demonstrativa: checkout não conectado.')}>Finalizar compra</button></>}</div>
-}
-export function AccountPage({ register = false }) {
-  return <div className="container utility-page"><div className="account-card"><UserRound size={36}/><h1>{register?'Criar conta':'Entrar na Digital Store'}</h1><p>Esta tela é demonstrativa para completar a navegação do projeto.</p>{register&&<input placeholder="Nome completo"/>}<input type="email" placeholder="E-mail"/><input type="password" placeholder="Senha"/><button className="buy-button" onClick={()=>alert('Autenticação demonstrativa.')}>{register?'Cadastrar':'Entrar'}</button><Link to="/products">Continuar explorando</Link></div></div>
-}
