@@ -1,0 +1,10 @@
+const r = require('express').Router();
+const auth = require('../middleware/auth');
+const { wrap } = require('../lib/errors');
+const c = require('../controllers/userController');
+r.post('/token', wrap(c.token));
+r.post('/', wrap(c.create));
+r.get('/:id', wrap(c.get));
+r.put('/:id', auth, wrap(c.update));
+r.delete('/:id', auth, wrap(c.remove));
+module.exports = r;

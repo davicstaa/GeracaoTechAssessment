@@ -1,0 +1,10 @@
+const r = require('express').Router();
+const auth = require('../middleware/auth');
+const { wrap } = require('../lib/errors');
+const c = require('../controllers/productController');
+r.get('/search', wrap(c.search));
+r.get('/:id', wrap(c.get));
+r.post('/', auth, wrap(c.create));
+r.put('/:id', auth, wrap(c.update));
+r.delete('/:id', auth, wrap(c.remove));
+module.exports = r;
